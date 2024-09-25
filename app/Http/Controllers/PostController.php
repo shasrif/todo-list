@@ -35,7 +35,7 @@ class PostController extends Controller implements HasMiddleware
         ]);
 
         $post = $request->user()->posts()->create($fields);
-        $todo = Post::all();
+        $todo = Post::with('user')->get();
         return view('ajax.all')->with('todo', $todo)->render();
     }
 
